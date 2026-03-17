@@ -6,7 +6,7 @@ import {
   FaLinkedinIn,
   FaFacebookF,
   FaTwitter,
-  FaYoutube,
+  FaInstagram,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -25,7 +25,7 @@ const Footer = () => {
 
             {/* Logo */}
             <img
-              src="/src/assets/media/logo_01.jpeg"
+              src="/public/assets/media/logo_01.jpeg"
               alt="Prisha Solutions"
               className="h-12 mb-6"
             />
@@ -63,11 +63,11 @@ const Footer = () => {
             </h4>
 
             <ul className="space-y-3 text-gray-600 text-sm">
-              <li className="hover:text-blue-600 transition cursor-pointer">IT Recruitment</li>
-              <li className="hover:text-blue-600 transition cursor-pointer">Non-IT Hiring</li>
-              <li className="hover:text-blue-600 transition cursor-pointer">Executive Search</li>
-              <li className="hover:text-blue-600 transition cursor-pointer">International Staffing</li>
-              <li className="hover:text-blue-600 transition cursor-pointer">Contract Staffing</li>
+              <li>IT Recruitment</li>
+              <li>Non-IT Hiring</li>
+              <li>Executive Search</li>
+              <li>International Staffing</li>
+              <li>Contract Staffing</li>
             </ul>
           </div>
 
@@ -96,19 +96,21 @@ const Footer = () => {
             <div className="flex gap-4 mb-6">
 
               <a
-                href="#"
+                href="https://www.linkedin.com/in/prakhar-gupta-1b7b59230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                 target="_blank"
+      rel="noopener noreferrer"
                 className="w-10 h-10 bg-blue-100 hover:bg-blue-600 hover:text-white text-blue-600 rounded-lg flex items-center justify-center transition duration-300"
               >
                 <FaLinkedinIn />
               </a>
-
-              <a
-                href="#"
-                className="w-10 h-10 bg-blue-100 hover:bg-blue-600 hover:text-white text-blue-600 rounded-lg flex items-center justify-center transition duration-300"
-              >
-                <FaFacebookF />
-              </a>
-
+<a
+      href="https://www.instagram.com/prakhar497?igsh=MWYxOXlodTI1NWphaw=="
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 bg-pink-100 hover:bg-pink-600 hover:text-white text-pink-600 rounded-lg flex items-center justify-center transition duration-300"
+    >
+      <FaInstagram />
+    </a>
               <a
                 href="#"
                 className="w-10 h-10 bg-blue-100 hover:bg-blue-600 hover:text-white text-blue-600 rounded-lg flex items-center justify-center transition duration-300"
@@ -118,9 +120,9 @@ const Footer = () => {
 
               <a
                 href="#"
-                className="w-10 h-10 bg-blue-100 hover:bg-red-600 hover:text-white text-blue-600 rounded-lg flex items-center justify-center transition duration-300"
+                className="w-10 h-10 bg-blue-100 hover:bg-blue-600 hover:text-white text-blue-600 rounded-lg flex items-center justify-center transition duration-300"
               >
-                <FaYoutube />
+                <FaFacebookF />
               </a>
 
             </div>

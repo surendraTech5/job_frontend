@@ -36,23 +36,41 @@ const Login = () => {
                     withCredentials: true,
                 }
             );
-            Swal.fire({
-                icon: "success",
-                title: "Hurray...",
-                text: response?.data?.message,
-            });
+             Swal.fire({
+    title: 'Login Successful!',
+    html: `<p style="font-size:14px; color:#4b5563; margin:0;">${response?.data?.message}</p>`,
+    icon: 'success',
+    iconColor: '#1d4ed8',
+    background: '#f9fafb',
+    showConfirmButton: true,
+    confirmButtonText: 'Continue',
+    confirmButtonColor: '#1d4ed8',
+    width: '350px',      
+    padding: '1.5rem',  
+    timer: 4500,
+    timerProgressBar: true,
+});
             handleFetchMe();
 
             reset();
             navigate("/");
             // navigate("/dashboard");
         } catch (error) {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: error?.response?.data,
-            });
-        }
+           Swal.fire({
+            title: 'Login Failed!',
+            html: `<p style="font-size:14px; color:#4b5563;">${error?.response?.data?.message || 'Please check your credentials.'}</p>`,
+            icon: 'error',
+            iconColor: '#dc2626', 
+            background: '#fef2f2',
+            showConfirmButton: true,
+            confirmButtonText: 'Retry',
+            confirmButtonColor: '#dc2626',
+             width: '350px',  
+    padding: '1.5rem',   
+    timer: 4500,
+    timerProgressBar: true,
+        });
+    }
         setIsLoading(false);
     };
 

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FaPhone,
   FaEnvelope,
@@ -8,6 +7,7 @@ import {
   FaTwitter,
   FaInstagram,
 } from "react-icons/fa";
+import logo from "../assets/media/logo_01.jpeg";
 
 const Footer = () => {
   return (
@@ -25,7 +25,7 @@ const Footer = () => {
 
             {/* Logo */}
             <img
-              src="/public/assets/media/logo_01.jpeg"
+              src={logo}
               alt="Prisha Solutions"
               className="h-12 mb-6"
             />

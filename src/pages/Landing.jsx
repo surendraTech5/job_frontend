@@ -3,15 +3,28 @@ import Wrapper from "../assets/css/wrappers/LandingPage";
 import { Link } from "react-router-dom";
 import { FaUsers, FaHandshake, FaSearch, FaBriefcase, FaGlobe, FaCheckCircle, FaBuilding, FaUserTie, FaPhone, FaEnvelope } from "react-icons/fa";
 import Navbar from "../components/shared/Navbar";
+import { useUserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import ResumeUploadModal from "../components/ResumeUploadModal";
 
 const Landing = () => {
     const navbarRef = useRef(null);
     const heroRef = useRef(null);
+    const { user } = useUserContext();
+  const navigate = useNavigate();
+  const [openResumeModal, setOpenResumeModal] = React.useState(false);
 
     useEffect(() => {
         const navbarHeight = navbarRef.current.getBoundingClientRect().height;
         heroRef.current.style.minHeight = `calc(100vh - ${navbarHeight}px)`;
     }, []);
+    const handleResumeClick = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      setOpenResumeModal(true);
+    }
+  };
     return (
         <>
             <Navbar navbarRef={navbarRef} />
@@ -57,14 +70,13 @@ const Landing = () => {
         Hire Talent
       </Link>
 
-      <Link
-        to="/register"
-        className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 rounded-xl font-semibold transition"
-      >
-        <FaUserTie className="inline mr-2" />
-        Submit Resume
-      </Link>
-
+  <button
+  onClick={handleResumeClick}
+  className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 rounded-xl font-semibold transition"
+>
+  <FaUserTie className="inline mr-2" />
+  Submit Resume
+</button>
       <Link
         to="/login"
         className="px-8 py-4 bg-green-600 hover:bg-green-700 rounded-xl font-semibold shadow-xl transition transform hover:scale-105"
@@ -699,6 +711,11 @@ const Landing = () => {
   </div>
 
 </section>
+{openResumeModal && (
+  <ResumeUploadModal
+    onClose={() => setOpenResumeModal(false)}
+  />
+)}
         </>
     );
 };

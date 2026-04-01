@@ -1,15 +1,49 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import Logo from "../Logo";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useUserContext } from "../../context/UserContext";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Navbar = ({ navbarRef }) => {
+  const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/logout`,
+        {},
+        { withCredentials: true } // ✅ correct config position
+      );
+
+      setUser(null);
+
+      Swal.fire({
+        title: "Logged Out Successfully",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      navigate("/", { replace: true }); // ✅ prevent back
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Wrapper ref={navbarRef}>
       <div className="container">
         <Logo />
 
         <div className="nav-links">
+          {/* ✅ NEW HOME LINK */}
+          <NavLink className="nav-item" to="/">
+            Home
+          </NavLink>
+
           <NavLink className="nav-item" to="/all-jobs">
             Jobs
           </NavLink>
@@ -18,9 +52,15 @@ const Navbar = ({ navbarRef }) => {
             Dashboard
           </NavLink>
 
-          <NavLink to="/login" className="login-btn">
-            Login
-          </NavLink>
+          {user ? (
+            <button onClick={handleLogout} className="login-btn">
+              Logout
+            </button>
+          ) : (
+            <NavLink to="/login" className="login-btn">
+              Login
+            </NavLink>
+          )}
         </div>
       </div>
     </Wrapper>

@@ -64,14 +64,12 @@ const Recruiter = () => {
         });
     };
 
-    const handleResumeView = (drive) => {
-        const newWindow = window.open(drive, "_blank");
-        if (newWindow) {
-            newWindow.focus();
-        } else {
-            alert("Please allow pop-ups for this site to open the PDF.");
-        }
-    };
+const handleResumeView = (fileUrl) => {
+  window.open(
+    `${import.meta.env.VITE_API_BASE_URL}/api/v1/application/download-resume?url=${encodeURIComponent(fileUrl)}`,
+    "_blank"
+  );
+};
     if (isPending) {
         return <LoadingComTwo />;
     }

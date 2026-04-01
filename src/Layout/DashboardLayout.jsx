@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import Wrapper from "../assets/css/wrappers/Dashboard";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { SmallSidebar, LargeSidebar, DashboardNavbar } from "../components";
 import Swal from "sweetalert2";
@@ -12,6 +13,7 @@ const DashboardContext = createContext();
 const DashboardLayout = () => {
     const { handleFetchMe, user } = useUserContext();
     const [showSidebar, setShowSidebar] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
@@ -24,6 +26,10 @@ const DashboardLayout = () => {
                 title: "Logout...",
                 text: response?.data?.message,
             });
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            navigate("/login", { replace: true });
+
             handleFetchMe();
         } catch (error) {
             Swal.fire({

@@ -4,6 +4,8 @@ import styled from "styled-components";
 import DashboardNavLinks from "./DashboardNavLinks";
 import { useDashboardContext } from "../../Layout/DashboardLayout";
 import { useUserContext } from "../../context/UserContext";
+import { NavLink } from "react-router-dom";
+import { AiFillHome } from "react-icons/ai";
 
 const LargeSidebar = () => {
     const { user } = useUserContext();
@@ -27,8 +29,19 @@ const LargeSidebar = () => {
                     </p>
                 </div>
                 <div className="content">
-                    <DashboardNavLinks />
-                </div>
+  <div className="nav-links">
+
+    {/* ✅ Home Link */}
+    <NavLink to="/" className="nav-link">
+      <span className="icon">
+        <AiFillHome />
+      </span>
+      Home
+    </NavLink>
+
+    <DashboardNavLinks />
+  </div>
+</div>
             </div>
         </Wrapper>
     );

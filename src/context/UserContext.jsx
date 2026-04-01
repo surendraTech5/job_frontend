@@ -6,20 +6,27 @@ const userContext = React.createContext();
 const UserContext = ({ children }) => {
     const [userLoading, setUserLoading] = useState(true);
     const [userError, setUserError] = useState({ status: false, message: "" });
-    const [user, setUser] = useState({});
+
+    // ✅ set initial value to null (not empty object)
+    const [user, setUser] = useState(null);
 
     const handleFetchMe = async () => {
         setUserLoading(true);
         try {
             const response = await axios.get(
-                `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/me`, // import.meta.env
+                `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/me`,
                 { withCredentials: true }
             );
+
             setUserError({ status: false, message: "" });
+
+            // ✅ set actual user
             setUser(response?.data?.result);
         } catch (error) {
             setUserError({ status: true, message: error?.message });
-            setUser({ status: false });
+
+            // ✅ set null if not logged in
+            setUser(null);
         }
         setUserLoading(false);
     };
@@ -28,9 +35,18 @@ const UserContext = ({ children }) => {
         handleFetchMe();
     }, []);
 
-    const passing = { userLoading, userError, user, handleFetchMe };
+    const passing = {
+        userLoading,
+        userError,
+        user,
+        setUser,          // ✅ export setUser (needed for logout)
+        handleFetchMe,
+    };
+
     return (
-        <userContext.Provider value={passing}>{children}</userContext.Provider>
+        <userContext.Provider value={passing}>
+            {children}
+        </userContext.Provider>
     );
 };
 

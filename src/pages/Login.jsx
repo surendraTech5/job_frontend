@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useUserContext } from "../context/UserContext";
+import Navbar from "../components/shared/Navbar";
 
 const Login = () => {
     const { handleFetchMe } = useUserContext();
@@ -21,7 +22,7 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     let navigate = useNavigate();
     let location = useLocation();
-    let from = location.state?.from?.pathname || "/"; // to navigate right location after login
+    let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
         setIsLoading(true);
@@ -30,7 +31,7 @@ const Login = () => {
         // posting
         try {
             const response = await axios.post(
-                `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login`, // import.meta.env
+                `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login`, 
                 data,
                 {
                     withCredentials: true,
@@ -75,6 +76,8 @@ const Login = () => {
     };
 
     return (
+        <>
+        <Navbar />
         <Wrapper>
             <div className="container">
                 <div className="flex justify-center">
@@ -136,6 +139,7 @@ const Login = () => {
                 </div>
             </div>
         </Wrapper>
+       </> 
     );
 };
 

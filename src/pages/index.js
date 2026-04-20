@@ -15,3 +15,4 @@ export { default as ManageUsers } from "./ManageUsers";
 export { default as Register } from "./Register";
 export { default as Stats } from "./Stats";
 export { default as Error } from "./Error";
+export { default as Resumes } from "./Resumes";

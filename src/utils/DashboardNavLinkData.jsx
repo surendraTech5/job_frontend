@@ -6,7 +6,7 @@ import { FiUser } from "react-icons/fi";
 import { FaUserShield } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 import { FaBriefcase } from "react-icons/fa";
-import { FaUsers } from "react-icons/fa6";
+import { FaFileExcel, FaUsers } from "react-icons/fa6";
 
 const AdminLinks = [
     {
@@ -52,6 +52,11 @@ const RecruiterLinks = [
         path: "my-jobs",
         icon: <FaBriefcase />,
     },
+    {
+        text: "Resume",
+        path: "resumes",
+        icon: <FaFileExcel />,
+    },
 ];
 
 const UserLinks = [
@@ -64,6 +69,11 @@ const UserLinks = [
         text: "Applications",
         path: "my-jobs",
         icon: <FaBriefcase />,
+    },
+    {
+        text: "Resume",
+        path: "resumes",
+        icon: <FaFileExcel />,
     },
 ];
 

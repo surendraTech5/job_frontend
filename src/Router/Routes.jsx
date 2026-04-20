@@ -26,6 +26,7 @@ import { JobContext } from "../context/JobContext";
 import CommonProtectRoute from "../components/shared/CommonProtectRoute";
 import ProtectAdminRoute from "../components/shared/ProtectAdminRoute";
 import RecruiterRoute from "../components/shared/RecruiterRoute";
+import Resumes from "../pages/Resumes";
 
 const router = createBrowserRouter([
     {
@@ -139,6 +140,14 @@ const router = createBrowserRouter([
                             </CommonProtectRoute>
                         ),
                     },
+                    {
+  path: "resumes",
+  element: (
+    <CommonProtectRoute>
+      <Resumes />
+    </CommonProtectRoute>
+  ),
+},
                 ],
             },
         ],

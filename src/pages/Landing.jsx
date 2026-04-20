@@ -6,6 +6,7 @@ import Navbar from "../components/shared/Navbar";
 import { useUserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import ResumeUploadModal from "../components/ResumeUploadModal";
+import founder from "../assets/media/founder.jpeg";
 
 const Landing = () => {
     const navbarRef = useRef(null);
@@ -573,11 +574,11 @@ const Landing = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div className="relative flex justify-center">
         <div className="relative">
-          
+        
           <img
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80"
-            alt="Prakhar Gupta - Founder"
-            className="rounded-2xl shadow-lg w-full max-w-sm object-cover"
+           src={founder}
+          alt="Prakhar Gupta - Founder"
+            className="rounded-2xl shadow-lg w-60 h-300 object-cover"
           />
 
           <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white p-3 rounded-xl shadow-md">
